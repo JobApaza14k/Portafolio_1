@@ -2,10 +2,7 @@
 <p align="center">
   <img src="assets/logo-finesi.png" alt="Logo FINESI 2025" width="180">
 </p>
-<!-- Banner con fondo de estadística e informática -->
-<p align="center">
-  <img src="https://img.freepik.com/vector-gratis/fondo-abstracto-grafico-datos_23-2148479722.jpg" alt="Fondo Estadística e Informática" width="100%">
-</p>
+
 
 <!-- Contenedor con fondo azul eléctrico -->
 <div style="background-color:#007FFF; padding:20px; border-radius:15px; color:white;">
