@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+  <h1>Animación con Python en la Web</h1>
+
+  <py-script>
+from js import document
+import asyncio, random
+
+canvas = document.createElement("canvas")
+canvas.width, canvas.height = 500, 300
+document.body.append(canvas)
+ctx = canvas.getContext("2d")
+
+x, y = 50, 50
+dx, dy = 2, 3
+
+async def animar():
+    global x, y, dx, dy
+    while True:
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.beginPath()
+        ctx.arc(x, y, 20, 0, 6.28)
+        ctx.fillStyle = random.choice(["red","blue","green","yellow"])
+        ctx.fill()
+        x += dx
+        y += dy
+        if x < 20 or x > canvas.width-20:
+            dx *= -1
+        if y < 20 or y > canvas.height-20:
+            dy *= -1
+        await asyncio.sleep(0.02)
+
+asyncio.ensure_future(animar())
+  </py-script>
+</body>
+</html>
