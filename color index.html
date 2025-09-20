@@ -2,32 +2,110 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi Portafolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio Estudiante - Programación Numérica</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    body {
-      background-color: #87CEEB; /* celeste */
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
-    }
-    h1 {
-      font-size: 3em;
-      color: #003366;
-    }
-    h2 {
-      font-size: 2em;
-      color: #004080;
-    }
-    p {
-      font-size: 1.5em;
-      color: #333333;
-    }
+    .fade-in { opacity: 0; animation: fadeIn 0.8s ease forwards; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .slide-up { transform: translateY(20px); opacity: 0; animation: slideUp 0.8s ease forwards; }
+    @keyframes slideUp { to { transform: translateY(0); opacity: 1; } }
   </style>
 </head>
-<body>
-  <h1>ESTADÍSTICA E INFORMÁTICA</h1>
-  <h2>MI PORTAFOLIO</h2>
-  <p>PROGRAMACIÓN NUMÉRICA</p>
-  <p><b>DOCENTE:</b> FRED TORES CRUZ</p>
+<body class="bg-gray-100 min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-indigo-700 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Mi Portafolio - EST207</h1>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#perfil" class="hover:text-indigo-200"><i class="fas fa-user mr-2"></i>Perfil</a>
+        <a href="#trabajos" class="hover:text-indigo-200"><i class="fas fa-folder-open mr-2"></i>Trabajos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Perfil -->
+  <section id="perfil" class="container mx-auto px-4 py-12 fade-in">
+    <div class="bg-white shadow-lg border border-slate-200 p-8 flex flex-col md:flex-row items-center">
+      <img src="https://via.placeholder.com/150" alt="Foto del estudiante" class="rounded-full w-32 h-32 mb-6 md:mb-0 md:mr-8">
+      <div>
+        <h2 class="text-3xl font-bold text-slate-800 mb-2">Job Edward Apaza Curtihuanca</h2>
+        <p class="text-slate-600 mb-4">Estudiante de Programación Numérica | 2025-II</p>
+        <p class="text-slate-700 leading-relaxed">
+          Este portafolio reúne los trabajos y proyectos realizados en el curso EST207 - Programación Numérica. 
+          Aquí documentaré implementaciones de algoritmos, prácticas y reportes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trabajos -->
+  <section id="trabajos" class="container mx-auto px-4 py-12 slide-up">
+    <div class="bg-white shadow-lg border border-slate-200 p-8">
+      <h2 class="text-3xl font-bold text-slate-800 mb-6">Mis Trabajos</h2>
+      
+      <!-- Tabla -->
+      <div class="overflow-x-auto mb-6">
+        <table class="min-w-full bg-white border border-slate-200">
+          <thead class="bg-indigo-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase border-b">#</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase border-b">Título</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase border-b">Enlace</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-slate-700 uppercase border-b">Estado</th>
+            </tr>
+          </thead>
+          <tbody id="trabajos-body" class="divide-y divide-slate-200">
+            <tr>
+              <td class="px-6 py-4 text-sm text-slate-500">1</td>
+              <td class="px-6 py-4 text-sm font-medium text-slate-900">Método de Bisección</td>
+              <td class="px-6 py-4 text-sm text-indigo-600"><a href="https://github.com/tuusuario/biseccion" target="_blank">Ver código</a></td>
+              <td class="px-6 py-4"><span class="px-2 inline-flex text-xs font-semibold rounded-full bg-green-100 text-green-800">Completado</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Formulario para agregar trabajos -->
+      <h3 class="text-lg font-semibold text-slate-800 mb-3">Agregar nuevo trabajo</h3>
+      <form id="form-trabajo" class="flex flex-col md:flex-row gap-4">
+        <input id="titulo" type="text" placeholder="Título del trabajo" class="flex-1 border p-2" required>
+        <input id="enlace" type="url" placeholder="Enlace (GitHub/Drive...)" class="flex-1 border p-2" required>
+        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 hover:bg-indigo-700 transition">Agregar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-800 text-white mt-16">
+    <div class="container mx-auto px-4 py-6 text-center">
+      <p class="text-indigo-200">© 2025 Portafolio Estudiante - EST207</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('form-trabajo');
+    const body = document.getElementById('trabajos-body');
+    let contador = 2;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const titulo = document.getElementById('titulo').value;
+      const enlace = document.getElementById('enlace').value;
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="px-6 py-4 text-sm text-slate-500">${contador}</td>
+        <td class="px-6 py-4 text-sm font-medium text-slate-900">${titulo}</td>
+        <td class="px-6 py-4 text-sm text-indigo-600"><a href="${enlace}" target="_blank">Ver enlace</a></td>
+        <td class="px-6 py-4"><span class="px-2 inline-flex text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Pendiente</span></td>
+      `;
+      body.appendChild(row);
+      contador++;
+      form.reset();
+    });
+  </script>
 </body>
 </html>
