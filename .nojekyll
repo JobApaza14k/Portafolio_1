@@ -1,4 +1,0 @@
-git add .nojekyll
-git commit -m "Desactivado Jekyll para sitio estático"
-git push
-
