@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Programación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f3f3f3;
+            color: #333;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #1a73e8;
+        }
+
+        .clase {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            padding: 20px;
+        }
+
+        .clase h2 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+        }
+
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            background: #1a73e8;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            background: #0d47a1;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: gray;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>📚 Portafolio de Programación</h1>
+
+    <!-- CLASE 1 -->
+    <div class="clase">
+        <h2>Clase 1: Método de Newton-Raphson</h2>
+        <p>Este programa calcula las raíces de una función mediante el método de Newton-Raphson.</p>
+        <pre><code>
+def f(x):
+    return x**3 - 4*x + 1
+
+def f_derivada(x):
+    return 3*x**2 - 4
+
+x0 = 1
+for i in range(10):
+    x1 = x0 - f(x0)/f_derivada(x0)
+    x0 = x1
+print("Raíz aproximada:", round(x0, 4))
+        </code></pre>
+        <a href="pdfs/newton_raphson.pdf" target="_blank">📄 Ver PDF</a>
+    </div>
+
+    <!-- CLASE 2 -->
+    <div class="clase">
+        <h2>Clase 2: Método de Bisección</h2>
+        <p>Ejemplo simple de cómo encontrar raíces mediante el método de bisección.</p>
+        <pre><code>
+def f(x):
+    return x**3 - 6*x + 2
+
+a, b = 0, 2
+for i in range(10):
+    c = (a + b) / 2
+    if f(a) * f(c) < 0:
+        b = c
+    else:
+        a = c
+print("Raíz aproximada:", round(c, 4))
+        </code></pre>
+        <a href="pdfs/biseccion.pdf" target="_blank">📄 Ver PDF</a>
+    </div>
+
+    <!-- CLASE 3 -->
+    <div class="clase">
+        <h2>Clase 3: Método de la Secante</h2>
+        <p>Encuentra raíces sin necesidad de derivadas usando el método de la secante.</p>
+        <pre><code>
+def f(x):
+    return x**2 - 3
+
+x0, x1 = 1, 2
+for i in range(8):
+    x2 = x1 - f(x1)*(x1 - x0)/(f(x1) - f(x0))
+    x0, x1 = x1, x2
+print("Raíz aproximada:", round(x2, 4))
+        </code></pre>
+        <a href="pdfs/secante.pdf" target="_blank">📄 Ver PDF</a>
+    </div>
+
+    <!-- CLASE 4 -->
+    <div class="clase">
+        <h2>Clase 4: Método de Punto Fijo</h2>
+        <p>Reescribe la función f(x)=0 en forma x=g(x) para aplicar iteraciones sucesivas.</p>
+        <pre><code>
+def g(x):
+    return (x**3 + 1)/4
+
+x0 = 1
+for i in range(10):
+    x1 = g(x0)
+    x0 = x1
+print("Raíz aproximada:", round(x0, 4))
+        </code></pre>
+        <a href="pdfs/punto_fijo.pdf" target="_blank">📄 Ver PDF</a>
+    </div>
+
+    <!-- CLASE 5 -->
+    <div class="clase">
+        <h2>Clase 5: Método de Gauss-Seidel</h2>
+        <p>Resuelve sistemas de ecuaciones lineales por aproximaciones sucesivas.</p>
+        <pre><code>
+x, y, z = 0, 0, 0
+for i in range(10):
+    x = (10 - y - z)/5
+    y = (12 - 2*x - z)/4
+    z = (15 - x - 2*y)/5
+print("Solución aproximada:", round(x,2), round(y,2), round(z,2))
+        </code></pre>
+        <a href="pdfs/gauss_seidel.pdf" target="_blank">📄 Ver PDF</a>
+    </div>
+
+    <footer>
+        © 2025 | Portafolio de Programación - Job Edward Apaza Curtihuanca
+    </footer>
+</body>
+</html>
